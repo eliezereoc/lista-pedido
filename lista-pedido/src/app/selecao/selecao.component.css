@@ -1,0 +1,21 @@
+:host {
+    max-width: 300px;
+    margin-top: 20px;
+    display: block;
+    border: 2px solid black;
+}
+
+#titulo_listas {
+    background-color: rgb(220,220,220);
+}
+
+#titulo_listas h2, p{
+    height: auto;
+    text-align: start;     
+    margin-left: 15px;
+}
+
+#listaAcrecimos {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

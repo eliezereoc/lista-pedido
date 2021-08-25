@@ -1,0 +1,33 @@
+<h1>{{title}}</h1>
+
+
+<div>
+    <div id="titulo_listas">
+        <h2>{{titulo_tamanho}}</h2>    
+    </div>
+    <div>
+        <table *ngFor= "let quantidade of quantidades" >
+            <tr>
+                <td><input type="radio"></td>
+                <td>{{quantidade.volume}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="titulo_listas">
+        <h2>{{titulo_acrecimos}}</h2> 
+        <p>Escolha até 3 opções ( {{selecionado}} Selecionado)</p>
+    </div>
+    <!-- <div id="listaAcrecimos" *ngFor= "let acrecimo of acrecimos">
+         <input (click)= "onClik()" type="checkbox">
+         <label for="" >{{acrecimo.sabor}}</label>
+    </div> -->
+    <div id="listaAcrecimos">
+        <table *ngFor= "let acrecimo of acrecimos; let i = index" >
+            <tr>
+                <td (click)= "onClik()"><input type="checkbox"></td>
+                <td>{{acrecimo.sabor}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
