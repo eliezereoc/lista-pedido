@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Tamanho, Acrecimos  } from './selectItens'
+
 
 @Component({
   selector: 'app-selecao',
@@ -8,37 +8,33 @@ import { Tamanho, Acrecimos  } from './selectItens'
 })
 export class SelecaoComponent implements OnInit {
 
-  title: string = 'Monte seu açai';
-  titulo_tamanho: string = 'Tamanho';
-  titulo_acrecimos: string = 'Acrécimos';
-
-  // @Input() selecionado: number = 0;
-  selecionado: number = 0;
-
-  quantidades: Tamanho[] = [
-    {volume: '300ml', done: false},
-    {volume: '500ml', done: false}
-  ];
-
-  acrecimos: Acrecimos[] = [
-    {sabor: 'Leite condensado', done: false},
-    {sabor: 'Banana', done: false},
-    {sabor: 'Granola', done: false},
-    {sabor: 'Morango', done: false},
-    {sabor: 'Leite em pó', done: false},
-    {sabor: 'Côco', done: false},
-    {sabor: 'Castanha de caju', done: false}
-  ]
+  @Input() titulo: string = '';
+  @Input() opcoes: string[] = [];
+  @Input() escolhaAte: number = 1;
+  opcoesEscolhida: string[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onClik(){
-    this.selecionado = this.selecionado + 1
-    // console.log();
-    
+  marcaOuDesmarcaOpcao(opcao: string) {
+    if (this.escolhaAte > 1) {
+      const idx = this.opcoesEscolhida.indexOf(opcao);
+      if (idx === -1) {
+        this.opcoesEscolhida.push(opcao);
+      } else {
+        this.opcoesEscolhida.splice(idx, 1);
+      }
+    } else {
+      this.opcoesEscolhida = [opcao];
+    }
+  }
+
+  estaDesabilitada(opcao: string){
+    return this.escolhaAte > 1 && 
+      this.opcoesEscolhida.indexOf(opcao) === -1 && 
+      this.opcoesEscolhida.length >= this.escolhaAte;
   }
 
 }

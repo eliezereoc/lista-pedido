@@ -5,17 +5,16 @@
     border: 2px solid black;
 }
 
-#titulo_listas {
-    background-color: rgb(220,220,220);
+.titulo {
+    background-color: #eee;
+    padding: 8px 16px;
 }
-
-#titulo_listas h2, p{
-    height: auto;
-    text-align: start;     
-    margin-left: 15px;
+.strong {
+    font-size: large;
 }
-
-#listaAcrecimos {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.opcao {
+    padding: 8px 16px;
+}
+.corpo {
+    padding: 8px 0;
 }

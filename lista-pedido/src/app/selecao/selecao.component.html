@@ -1,33 +1,17 @@
-<h1>{{title}}</h1>
-
-
-<div>
-    <div id="titulo_listas">
-        <h2>{{titulo_tamanho}}</h2>    
+<div class="titulo">
+    <strong>{{titulo}}</strong> 
+    <div *ngIf="escolhaAte > 1">
+        Escolha até {{escolhaAte}} ({{opcoesEscolhida.length}} escolhidas)
     </div>
-    <div>
-        <table *ngFor= "let quantidade of quantidades" >
-            <tr>
-                <td><input type="radio"></td>
-                <td>{{quantidade.volume}}</td>
-            </tr>
-        </table>
-    </div>
-
-    <div id="titulo_listas">
-        <h2>{{titulo_acrecimos}}</h2> 
-        <p>Escolha até 3 opções ( {{selecionado}} Selecionado)</p>
-    </div>
-    <!-- <div id="listaAcrecimos" *ngFor= "let acrecimo of acrecimos">
-         <input (click)= "onClik()" type="checkbox">
-         <label for="" >{{acrecimo.sabor}}</label>
-    </div> -->
-    <div id="listaAcrecimos">
-        <table *ngFor= "let acrecimo of acrecimos; let i = index" >
-            <tr>
-                <td (click)= "onClik()"><input type="checkbox"></td>
-                <td>{{acrecimo.sabor}}</td>
-            </tr>
-        </table>
+</div>
+<div class="corpo">
+    <div class="opcao" *ngFor= "let opcao of opcoes">
+        <input 
+            [type]="escolhaAte > 1 ? 'checkbox' : 'radio'"
+            [checked]="opcoesEscolhida.indexOf(opcao) !== -1"
+            [disabled]="estaDesabilitada(opcao)"
+            (change)="marcaOuDesmarcaOpcao(opcao)"
+        />
+        {{opcao}}
     </div>
 </div>
